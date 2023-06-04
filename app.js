@@ -13,7 +13,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-pradeep:R%40ju2108@atlascluster.vskmyqo.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://admin-pradeep:R%40ju2108@atlascluster.vskmyqo.mongodb.net/todolistDB").then(
+  app.listen(process.env.PORT || 3000, function() {
+    console.log("Server started on port 3000");
+  })
+);
 
 const itemsSchema={
   name:String,
@@ -52,7 +56,7 @@ app.get("/", function (req, res) {
   Item.find({})
     .then(foundItem => {
       if (foundItem.length === 0) {
-        return Item.insertMany(defaultItems);
+        return Item.insertMany(defaultitems);
       } else {
         return foundItem;
       }
@@ -135,6 +139,4 @@ app.post("/delete",function(req,res){
   
 })
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
-});
+
