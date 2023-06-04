@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-pradeep:R%40ju2108@atlascluster.vskmyqo.mongodb.net/todolistDB").then(
+mongoose.connect("mongodb+srv://admin-pradeep:Raju2108@atlascluster.vskmyqo.mongodb.net/todolistDB").then(
   app.listen(process.env.PORT || 3000, function() {
     console.log("Server started on port 3000");
   })
